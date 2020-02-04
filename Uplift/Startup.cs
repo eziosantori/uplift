@@ -14,6 +14,8 @@ using Microsoft.Extensions.Hosting;
 using Uplift.DataAccess.Data;
 using Uplift.DataAccess.Data.Repository.IRepository;
 using Uplift.DataAccess.Data.Repository;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Uplift.Utility;
 
 namespace Uplift
 {
@@ -37,6 +39,8 @@ namespace Uplift
           .AddDefaultTokenProviders();
       //.AddDefaultUI(UIFramework.);
       services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+      services.AddSingleton<IEmailSender, EmailSender>();
 
       services.AddControllersWithViews()
         .AddNewtonsoftJson()
