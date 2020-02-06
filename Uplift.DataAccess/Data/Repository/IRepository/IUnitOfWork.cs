@@ -7,6 +7,9 @@ namespace Uplift.DataAccess.Data.Repository.IRepository
   public interface IUnitOfWork : IDisposable
   {
     ICategoryRepository Category { get; }
+    public IFrequencyRepository Frequency { get; }
+    public IServiceRepository Service { get;}
+
 
     void Save();
   }
