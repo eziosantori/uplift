@@ -40,6 +40,13 @@ namespace Uplift
       //.AddDefaultUI(UIFramework.);
       services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+      services.AddSession(opt => {
+        opt.IdleTimeout = TimeSpan.FromMinutes(30);
+        opt.Cookie.IsEssential = true;
+        opt.Cookie.HttpOnly = true;
+
+      });
+
       services.AddSingleton<IEmailSender, EmailSender>();
 
       services.AddControllersWithViews()
@@ -73,7 +80,7 @@ namespace Uplift
       }
       app.UseHttpsRedirection();
       app.UseStaticFiles();
-
+      app.UseSession();
       app.UseRouting();
 
       app.UseAuthentication();
